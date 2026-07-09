@@ -32,5 +32,9 @@ check "failing cmd -> 2" 2 "$(run '{"stop_hook_active": false}')"
 # 5. Loop guard: failing cmd but already active -> 0
 check "loop guard -> 0" 0 "$(run '{"stop_hook_active": true}')"
 
+# 6. Malformed king.json -> fail closed (exit 2), never a silent no-op
+printf '{ this is not json' > "$TMP/.claude/king.json"
+check "malformed king.json -> 2" 2 "$(run '{"stop_hook_active": false}')"
+
 echo; echo "  $pass passed, $fail failed"
 [ "$fail" -eq 0 ]

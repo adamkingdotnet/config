@@ -1,0 +1,9 @@
+# Canonical shared ruff config for the adamkingdotnet Python repos.
+# Consumers copy this (ruff has no cross-repo package mechanism) and add their
+# own `target-version` locally. Keep the [lint] rules in sync with this file.
+line-length = 100
+
+[lint]
+# E/F/W (pycodestyle + pyflakes), I (import sort), B (bugbear), UP (pyupgrade).
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]  # line length advisory, not enforced

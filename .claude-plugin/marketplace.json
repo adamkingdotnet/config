@@ -1,0 +1,13 @@
+{
+  "name": "king",
+  "owner": { "name": "Adam King", "email": "hello@adamking.net" },
+  "description": "Shared agentic layer for the adamkingdotnet fleet.",
+  "plugins": [
+    {
+      "name": "king-agents",
+      "source": "./plugins/king-agents",
+      "category": "workflow",
+      "description": "Verify-before-done hook, health-check + sops-edit commands, per-repo-type settings templates."
+    }
+  ]
+}

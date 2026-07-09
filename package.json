@@ -1,0 +1,33 @@
+{
+  "name": "@king/config",
+  "version": "0.1.0",
+  "description": "Shared config: ESLint/tsconfig/Prettier presets + Terraform modules",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./eslint/worker": "./eslint/worker.mjs",
+    "./eslint/vite-react": "./eslint/vite-react.mjs",
+    "./tsconfig/worker.json": "./tsconfig/worker.json",
+    "./tsconfig/worker-lib.json": "./tsconfig/worker-lib.json",
+    "./tsconfig/vite-app.json": "./tsconfig/vite-app.json",
+    "./tsconfig/vite-node.json": "./tsconfig/vite-node.json",
+    "./prettier": "./prettier/index.json"
+  },
+  "dependencies": {
+    "@eslint/js": "^10.0.1",
+    "typescript-eslint": "^8.63.0",
+    "globals": "^17.7.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "eslint-config-prettier": "^10.1.8"
+  },
+  "peerDependencies": {
+    "eslint": ">=10",
+    "prettier": ">=3",
+    "typescript": ">=6"
+  },
+  "peerDependenciesMeta": {
+    "prettier": { "optional": true },
+    "typescript": { "optional": true }
+  }
+}

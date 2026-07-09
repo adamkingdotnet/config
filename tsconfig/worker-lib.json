@@ -1,0 +1,10 @@
+{
+  "extends": "./worker.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": false,
+    "declaration": true,
+    "declarationMap": true
+  }
+}

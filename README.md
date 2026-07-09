@@ -1,11 +1,14 @@
 # adamkingdotnet/config
 
-Shared, cross-project configuration for the `adamkingdotnet` workspace. **Public** — contains no secrets.
+Shared configuration and small infrastructure building blocks I reuse across my
+personal projects: a Terraform module, linter/formatter/TypeScript presets, and a
+few CI helpers. Public because none of it is secret — but it's tuned for my own
+repositories rather than meant as a general-purpose library.
 
 ## `tf-modules/cloudflare-site`
 
-Terraform module for a standard Cloudflare-fronted site: a zone, the house-style
-zone settings (`ssl=strict`, `always_use_https`, `automatic_https_rewrites`,
+Terraform module for a standard Cloudflare-fronted site: a zone, house-style zone
+settings (`ssl=strict`, `always_use_https`, `automatic_https_rewrites`,
 `min_tls_version=1.2`), and worker custom-domain attachments (apex + optional
 `www` + extra hostnames).
 
@@ -61,3 +64,12 @@ Shared JS/TS/Python/editor presets, exposed via the `@king/config` package `expo
   own `target-version` locally.
 - **Editor** — `.editorconfig` (UTF-8, LF, 2-space indent, final newline, trailing-whitespace trim
   except in Markdown).
+
+## Also here
+
+- **`host-infra/`** — shared fragments for my Docker host stacks (a backup
+  verify/prune helper and a reduced-privilege Netdata base), plus house-style notes.
+  See [`host-infra/README.md`](host-infra/README.md).
+- **`agents/working-agreement.md`** — a short working agreement vendored into each
+  repository's `AGENTS.md`; the `scripts/check-*.sh` helpers keep the vendored
+  copies byte-identical to the canonical here.

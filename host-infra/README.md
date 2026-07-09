@@ -45,9 +45,7 @@ for Pocket ID's SQLite). What they share, via `backup-lib.sh`:
 - **`name:` the project** at the top of the top-level compose file so container
   names and volume prefixes are stable across `docker compose` invocations.
 - **Memory limits use `deploy.resources.limits.memory`** (the v3 form, honored by
-  `docker compose up` outside swarm), not the legacy `mem_limit:`. *(The VPS
-  stack still carries legacy `mem_limit:` on its services — a known, low-priority
-  normalization, not yet converted.)*
+  `docker compose up` outside swarm), not the legacy `mem_limit:`.
 - **`x-common: &common` anchors are file-local.** YAML anchors don't cross
   `include:` boundaries, so each compose file declares its own — intentional
   duplication, not drift.

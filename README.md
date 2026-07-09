@@ -45,6 +45,19 @@ moved {
 
 Pin `?ref=` to a tag; bump the tag when the module changes.
 
-## Roadmap
+## Presets
 
-- Phase 5 adds JS/lint presets here (ESLint, tsconfig, Prettier, `.editorconfig`, ruff/mypy).
+Shared JS/TS/Python/editor presets, exposed via the `@king/config` package `exports`
+(the package is `private`; consumers pull it as a `github:` tarball, so `@main` is the release).
+
+- **ESLint** — `eslint/worker.mjs` and `eslint/vite-react.mjs` (flat config). Import as
+  `@king/config/eslint/worker` / `@king/config/eslint/vite-react`.
+- **tsconfig** — `tsconfig/worker.json`, `tsconfig/worker-lib.json`, `tsconfig/vite-app.json`,
+  `tsconfig/vite-node.json`. Extend via `@king/config/tsconfig/<name>.json`.
+- **Prettier** — `prettier/index.json` (`semi: false`, `singleQuote: true`, `printWidth: 100`,
+  `trailingComma: "all"`). Reference as `@king/config/prettier`.
+- **Python (ruff)** — `python/ruff.toml` (rules `E`/`F`/`W`/`I`/`B`/`UP`, `line-length = 100`,
+  `E501` ignored). ruff has no cross-repo package mechanism, so consumers copy it and add their
+  own `target-version` locally.
+- **Editor** — `.editorconfig` (UTF-8, LF, 2-space indent, final newline, trailing-whitespace trim
+  except in Markdown).

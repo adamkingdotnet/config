@@ -15,6 +15,8 @@ jobs:
           bash scripts/tests/check-version-bump.test.sh
       - name: working-agreement (self)
         run: bash scripts/check-agreement.sh AGENTS.md
+      - name: settings template (self)
+        run: bash scripts/check-settings.sh shared-config .claude/settings.json
   version-bump:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest

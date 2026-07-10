@@ -48,7 +48,7 @@ Every file here is fanned out fleet-wide. A byte-change is a downstream break un
 
 ## Applies here
 
-- **No CI in this repo.** "Green" means **downstream** consumers pass after you push: host repos' `check-vendored`/`check-agreement` jobs and worker/vite lint. There is nothing to gate here — verify by pushing then watching consumers.
+- **Self-CI runs here now** (`.github/workflows/self-check.yml`): the plain-bash test suites (`verify-gate`, `check-settings`, `check-version-bump`), the working-agreement gate on this `AGENTS.md`, and a PR-only version-bump guard (any `plugins/king-agents/**` change must bump `plugin.json`'s `version`). "Green" still *also* means **downstream** consumers pass after you push (host repos' `check-vendored`/`check-agreement`, worker/vite lint).
 - **`wrangler` is N/A** — the Cloudflare surface is the tofu module, so `tofu`/`terraform` is the tool, not `wrangler`.
 - **SSH is load-bearing** for host-infra changes — verify `backup-lib.sh` edits against live NAS/VPS dumps (`ssh nas`, `ssh vps`).
 - **Verify-latest applies** to the lint/ts presets — check current ESLint/typescript-eslint APIs against upstream before editing.

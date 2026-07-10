@@ -7,7 +7,7 @@ manifest="plugins/king-agents/.claude-plugin/plugin.json"
 if git diff --quiet "$base" -- plugins/king-agents/; then
   echo "ok: no plugins/king-agents change"; exit 0
 fi
-now="$(python3 -c 'import json; print(json.load(open("'"$manifest"'")).get("version",""))')"
+now="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("version",""))' "$manifest")"
 was="$(git show "$base:$manifest" 2>/dev/null | python3 -c 'import json,sys; print(json.load(sys.stdin).get("version",""))' 2>/dev/null || echo "")"
 if [ -n "$now" ] && [ "$now" != "$was" ]; then
   echo "ok: plugin changed and version bumped ($was -> $now)"; exit 0

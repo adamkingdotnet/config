@@ -12,6 +12,7 @@ jobs:
         run: |
           bash plugins/king-agents/scripts/verify-gate.test.sh
           bash scripts/tests/check-settings.test.sh
+          bash scripts/tests/check-version-bump.test.sh
       - name: working-agreement (self)
         run: bash scripts/check-agreement.sh AGENTS.md
   version-bump:

@@ -1,0 +1,16 @@
+name: self-check
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: bash test suites
+        run: |
+          bash plugins/king-agents/scripts/verify-gate.test.sh
+          bash scripts/tests/check-settings.test.sh
+      - name: working-agreement (self)
+        run: bash scripts/check-agreement.sh AGENTS.md

@@ -7,10 +7,20 @@ jobs:
   checks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: bash test suites
         run: |
           bash plugins/king-agents/scripts/verify-gate.test.sh
           bash scripts/tests/check-settings.test.sh
       - name: working-agreement (self)
         run: bash scripts/check-agreement.sh AGENTS.md
+  version-bump:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with: { fetch-depth: 0 }
+      - name: require plugin version bump
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: bash scripts/check-version-bump.sh "origin/$BASE_REF"

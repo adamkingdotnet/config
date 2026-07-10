@@ -1,2 +1,4 @@
 # shared agent layer — committed harness config (global ~/.gitignore ignores .claude/*)
 !.claude/settings.json
+!.claude/commands/
+!.claude/commands/**

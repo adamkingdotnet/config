@@ -46,6 +46,10 @@ Every file here is fanned out fleet-wide. A byte-change is a downstream break un
 - `host-infra/tests/run.sh` — plain-bash tests for `backup-lib.sh` (`verify_dump`/`atomic_publish`/`prune_keep`); no bats needed. (`host-infra/tests/backup-lib.bats` mirrors it.)
 - `tofu -chdir=tf-modules/cloudflare-site validate` and `tofu fmt` — module hygiene.
 
+## Shared agent layer
+
+This repo consumes the **`king-agents`** plugin it *ships* — dogfooding from `adamkingdotnet/config` (auto-enabled via the `extraKnownMarketplaces` + `enabledPlugins` block in the committed `.claude/settings.json`). Permissions live in that file, **byte-gated to the `shared-config` template** — don't hand-edit it; changes belong in `plugins/king-agents/settings-templates/shared-config.json` (self-check's `settings template (self)` step gates the two against drift). There is **no `.claude/king.json`** here: this repo declares no verify gate, so the `Stop` hook is a no-op and the layer is **advisory** — "green" is still enforced by `self-check.yml`, not the hook. Only machine-local grants go in `.claude/settings.local.json` (gitignored). Run `/king:doctor` for a health check (plugin version, agreement/settings drift).
+
 ## Applies here
 
 - **Self-CI runs here now** (`.github/workflows/self-check.yml`): the plain-bash test suites (`verify-gate`, `check-settings`, `check-version-bump`), the working-agreement gate on this `AGENTS.md`, and a PR-only version-bump guard (any `plugins/king-agents/**` change must bump `plugin.json`'s `version`). "Green" still *also* means **downstream** consumers pass after you push (host repos' `check-vendored`/`check-agreement`, worker/vite lint).

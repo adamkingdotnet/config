@@ -7,7 +7,7 @@
       "name": "king-agents",
       "source": "./plugins/king-agents",
       "category": "workflow",
-      "description": "Verify-before-done hook, health-check + sops-edit commands, per-repo-type settings templates."
+      "description": "Verify-before-done hook, health-check command, per-repo-type settings templates."
     }
   ]
 }

@@ -20,7 +20,7 @@
       "Bash(gh pr list:*)",
       "Bash(gh pr checks:*)",
       "Bash(gh run view:*)",
-      "Bash(gh api:*)",
+      "Bash(claude plugin list)",
       "Bash(rg:*)",
       "Bash(fd:*)",
       "Bash(ls:*)",
@@ -40,7 +40,8 @@
       "Bash(npx vitest:*)",
       "Bash(npx eslint:*)",
       "Bash(npx wrangler dev:*)",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ],
     "deny": [],
     "ask": [

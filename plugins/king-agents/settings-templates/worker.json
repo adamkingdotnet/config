@@ -1,0 +1,62 @@
+{
+  "extraKnownMarketplaces": {
+    "king": { "source": { "source": "github", "repo": "adamkingdotnet/config" } }
+  },
+  "enabledPlugins": { "king-agents@king": true },
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git checkout:*)",
+      "Bash(git restore:*)",
+      "Bash(git branch:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh run view:*)",
+      "Bash(claude plugin list)",
+      "Bash(rg:*)",
+      "Bash(fd:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(pnpm install)",
+      "Bash(pnpm run lint:*)",
+      "Bash(pnpm run build:*)",
+      "Bash(pnpm run dev:*)",
+      "Bash(pnpm test:*)",
+      "Bash(npm ci)",
+      "Bash(npm install)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm test:*)",
+      "Bash(npm run test:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vitest:*)",
+      "Bash(npx eslint:*)",
+      "Bash(oxlint:*)",
+      "Bash(npx wrangler dev:*)",
+      "Bash(ruff:*)",
+      "Bash(uv run:*)",
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ],
+    "deny": [],
+    "ask": [
+      "Bash(npm run deploy:*)",
+      "Bash(pnpm run deploy:*)",
+      "Bash(npx wrangler deploy:*)",
+      "Bash(tofu apply:*)"
+    ]
+  }
+}

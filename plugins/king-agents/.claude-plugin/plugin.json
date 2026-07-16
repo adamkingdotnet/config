@@ -1,6 +1,6 @@
 {
   "name": "king-agents",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Shared agentic layer for the adamkingdotnet fleet: a verify-before-done Stop hook, health-check + sops-edit commands, a verify-latest-docs skill, and per-repo-type settings templates.",
   "author": { "name": "Adam King", "email": "hello@adamking.net" },
   "homepage": "https://github.com/adamkingdotnet/config",

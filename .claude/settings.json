@@ -39,9 +39,7 @@
     ],
     "deny": [],
     "ask": [
-      "Bash(tofu apply:*)",
-      "Bash(ssh nas:*)",
-      "Bash(ssh vps:*)"
+      "Bash(tofu apply:*)"
     ]
   }
 }

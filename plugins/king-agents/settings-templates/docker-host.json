@@ -47,8 +47,6 @@
       "Bash(docker compose down:*)",
       "Bash(docker compose restart:*)",
       "Bash(./deploy.sh:*)",
-      "Bash(ssh nas:*)",
-      "Bash(ssh vps:*)",
       "Bash(sops:*)"
     ]
   }

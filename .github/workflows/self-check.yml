@@ -8,32 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: bash test suites
+      - name: host-infra vendor checks
         run: |
-          bash plugins/king-agents/scripts/verify-gate.test.sh
-          bash scripts/tests/check-settings.test.sh
-          bash scripts/tests/check-version-bump.test.sh
-      - name: working-agreement (self, vs LOCAL canonical)
-        # config is the SOURCE of the working agreement, so verify its AGENTS.md block
-        # matches its OWN agents/working-agreement.md — not @main (which is circular and
-        # breaks on a canonical bump). Downstream repos still check against config@main.
-        run: |
-          awk '/<!-- BEGIN working-agreement/{f=1;next} /<!-- END working-agreement/{f=0} f' AGENTS.md > /tmp/wa-block
-          diff -u agents/working-agreement.md /tmp/wa-block && echo "ok: AGENTS.md block matches local agents/working-agreement.md"
-      - name: settings template (self, vs LOCAL canonical)
-        # config is the SOURCE of the settings templates, so gate its .claude/settings.json
-        # against its OWN shared-config.json — not @main (which is circular and breaks on a
-        # template bump). Downstream repos still check against config@main.
-        env:
-          KING_CONFIG_RAW: file://${{ github.workspace }}
-        run: bash scripts/check-settings.sh shared-config .claude/settings.json
-  version-bump:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with: { fetch-depth: 0 }
-      - name: require plugin version bump
-        env:
-          BASE_REF: ${{ github.base_ref }}
-        run: bash scripts/check-version-bump.sh "origin/$BASE_REF"
+          bash scripts/check-vendored.sh
